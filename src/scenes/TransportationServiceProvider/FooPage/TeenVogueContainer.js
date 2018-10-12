@@ -1,12 +1,18 @@
 import { connect } from 'react-redux';
 import ListView from './ListView';
+import { loadTeam } from '../ducks';
 
 const mapStateToProps = state => {
   const team = state.tsp.teams.teen_vogue;
   return {
+    loading: team.loading,
     names: team.members,
     title: team.name,
   };
 };
 
-export default connect(mapStateToProps)(ListView);
+const mapDispatchToProps = (dispatch, { id }) => ({
+  onMount: () => setTimeout(() => dispatch(loadTeam('teen_vogue')), 2000),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListView);

@@ -7,17 +7,21 @@ class ListView extends Component {
   }
 
   render() {
-    const { names, title } = this.props;
+    const { loading, names, title } = this.props;
     return (
       <div>
         <p>{title}</p>
-        <ul>{names.map((name, index) => <li key={index}>{name}</li>)}</ul>
+        {loading && <div>Loading...</div>}
+        {!loading && (
+          <ul>{names.map((name, index) => <li key={index}>{name}</li>)}</ul>
+        )}
       </div>
     );
   }
 }
 
 ListView.propsTypes = {
+  loading: PropTypes.bool,
   names: PropTypes.arrayOf(PropTypes.string),
   onMount: PropTypes.func,
   title: PropTypes.string,

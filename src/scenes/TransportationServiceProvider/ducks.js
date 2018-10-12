@@ -159,6 +159,13 @@ export function loadShipmentDependencies(shipmentId) {
   };
 }
 
+// Sara's Test Stuff
+const LOAD_TEAM_COMPLETE = 'LOAD_TEM_COMPLETE';
+export const loadTeam = teamName => ({
+  type: LOAD_TEAM_COMPLETE,
+  payload: { teamName },
+});
+
 // Selectors
 
 // Reducer
@@ -199,14 +206,17 @@ const initialState = {
     a_team: {
       members: ['Alexi', 'Jim', 'Kim', 'Reggie'],
       name: 'A-Team',
+      loading: true,
     },
     teen_vogue: {
       members: ['Andrea', 'Donald', 'Erin', 'Patrick'],
       name: 'Team Teen Vogue',
+      loading: true,
     },
     roci: {
       members: ['Rebecca', 'Chris', 'Ron', 'Kara', 'Sara'],
       name: 'Team Roci',
+      loading: true,
     },
   },
 };
@@ -216,6 +226,17 @@ export function tspReducer(state = initialState, action) {
     // SINGLE-RESOURCE ACTION TYPES
 
     // SHIPMENTS
+    case LOAD_TEAM_COMPLETE:
+      const teamName = action.payload.teamName;
+      const team = state.teams[teamName];
+      const teams = {
+        ...state.teams,
+        [teamName]: { ...team, loading: false },
+      };
+      return {
+        ...state,
+        teams,
+      };
     case LOAD_SHIPMENT.start:
       return Object.assign({}, state, {
         shipmentIsLoading: true,
