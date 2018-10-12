@@ -195,6 +195,20 @@ const initialState = {
   serviceAgents: [],
   generateGBLSuccess: false,
   generateGBLError: null,
+  teams: {
+    a_team: {
+      members: ['Alexi', 'Jim', 'Kim', 'Reggie'],
+      name: 'A-Team',
+    },
+    teen_vogue: {
+      members: ['Andrea', 'Donald', 'Erin', 'Patrick'],
+      name: 'Team Teen Vogue',
+    },
+    roci: {
+      members: ['Rebecca', 'Chris', 'Ron', 'Kara', 'Sara'],
+      name: 'Team Roci',
+    },
+  },
 };
 
 export function tspReducer(state = initialState, action) {
