@@ -9,4 +9,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(ListView);
+const mapDispatchToProps = (_dispatch, { id }) => ({
+  onMount: () => alert(`Whaaaaaaat?! ${id}`),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListView);

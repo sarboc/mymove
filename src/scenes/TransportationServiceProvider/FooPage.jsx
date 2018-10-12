@@ -7,9 +7,9 @@ import TeenVogue from './FooPage/TeenVogueContainer';
 const FooPage = ({ aTeam, id, roci, teenVogue }) => (
   <div style={{ paddingLeft: '20px' }}>
     <div>Hello!!!! {id}</div>
-    <ATeam />
-    <Roci />
-    <TeenVogue />
+    <ATeam id={id} />
+    <Roci id={id} />
+    <TeenVogue id={id} />
   </div>
 );
 
