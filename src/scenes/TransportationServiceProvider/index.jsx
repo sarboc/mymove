@@ -17,6 +17,7 @@ import ScratchPad from 'shared/ScratchPad';
 import { isProduction } from 'shared/constants';
 import ShipmentInfo from './ShipmentInfo';
 import DocumentViewer from './DocumentViewerContainer';
+import FooPage from './FooPage';
 
 import './tsp.css';
 
@@ -53,6 +54,7 @@ class TspWrapper extends Component {
               <LogoutOnInactivity />
               <Switch>
                 <Redirect from="/" to="/queues/new" exact />
+                <PrivateRoute path="/foo/:id" component={FooPage} />
                 <PrivateRoute
                   path="/shipments/:shipmentId/documents/new"
                   render={() => <div>Placeholder for new doc</div>}
